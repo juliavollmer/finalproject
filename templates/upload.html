@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+				<h1>Upload</h1>
+				<p> Please choose your username and password carefully. Try to remember it, because it can't be retrieved.</p>
+				<form action="/signup" method="POST">
+        Username: <input type="text" name="username">
+				Password: <input type="password" name="password">
+				<input type="SUBMIT" value="SIGN UP">
+      </form>
+{% endblock %}
