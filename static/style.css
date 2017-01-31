@@ -1,7 +1,7 @@
 h1 {
   font-family: 'Nunito', sans-serif;
   font-size: 20px;
-  color: #9e0016;
+  color: rgb(255, 161, 0);
   text-align: center;
   text-shadow: 2px 2px 2px #000;
 }
@@ -32,16 +32,37 @@ h2 {
     text-shadow: 1px #000;
 }
 
-body {
-  background-color: #1c1c1c;
-}
+  body {
+     background-color: rgb(195, 195, 195);
+   }
+
+   @keyframes colorchange
+   {
+     0%   {background: rgb(255, 161, 0);}
+     25%  {background: rgb(65, 0, 0);}
+     50%  {background: rgb(0, 156, 255);}
+     75%  {background: rgb(46, 16, 73);}
+     100% {background: rgb(57, 73, 120);}
+   }
+
+   @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+   {
+     0%   {background: rgb(255, 161, 0);}
+     25%  {background: rgb(65, 0, 0);}
+     50%  {background: rgb(0, 156, 255);}
+     75%  {background: rgb(46, 16, 73);}
+     100% {background: rgb(57, 73, 120);}
+   }
+
 
 div {
     margin: 0 auto 0 auto;
-    width: 740px;
+    width: 54%;
+    right: 22%;
+    left: 22%;
     text-align: justify;
-    padding: 5px;
-    background-color: rgb(255, 237, 231);
+    padding: 1%;
+    background-color: white;
     overflow: auto;
 }
 
@@ -50,17 +71,31 @@ img.header {
   margin: 0 auto 0 auto;
   top: 0;
   max-height: 100%;
+  width: 56%;
+  right: 22%;
+  left: 22%;
+  background: #700000;
+  animation: colorchange 50s; /* animation-name followed by duration in seconds*/
+     /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 50s; /* Chrome and Safari */
 }
 
 img.footer {
+  background: #700000;
   display: block;
   margin: 0 auto 0 auto;
   bottom: 0;
   max-height: 100%;
+  width: 56%;
+  right: 22%;
+  left: 22%;
+  animation: colorchange 50s; /* animation-name followed by duration in seconds*/
+     /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 50s; /* Chrome and Safari */
 }
 
 project {
-  background-color: #333;
+  background-color: #666666;
   text-align: center;
   color: white;
   position: fixed;
@@ -91,7 +126,7 @@ nav {
   position: fixed;
   left: 2%;
   width: 19%;
-  background-color: #333;
+  background-color: black;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -136,7 +171,6 @@ li a:active {
 
 .dropdown-content {
     display: none;
-    position: relative;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     max-width:95%;
