@@ -24,6 +24,7 @@ hr {
 
 p {
     font-family: 'Open Sans', sans-serif;
+    text-align: left;
 }
 
 h2 {
@@ -38,20 +39,24 @@ h2 {
 
    @keyframes colorchange
    {
-     0%   {background: rgb(255, 161, 0);}
-     25%  {background: rgb(65, 0, 0);}
-     50%  {background: rgb(0, 156, 255);}
-     75%  {background: rgb(46, 16, 73);}
-     100% {background: rgb(57, 73, 120);}
+     0%   {background: rgb(40, 255, 0);}
+     15%  {background: rgb(0, 124, 255);}
+     30%  {background: rgb(69, 0, 234);}
+     45%  {background: rgb(87, 0, 158);}
+     60% {background: rgb(179, 0, 0);}
+     75% {background: rgb(255, 99, 0);}
+     90% {background: rgb(153, 255, 0);}
    }
 
    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
    {
-     0%   {background: rgb(255, 161, 0);}
-     25%  {background: rgb(65, 0, 0);}
-     50%  {background: rgb(0, 156, 255);}
-     75%  {background: rgb(46, 16, 73);}
-     100% {background: rgb(57, 73, 120);}
+     0%   {background: rgb(40, 255, 0);}
+     15%  {background: rgb(0, 124, 255);}
+     30%  {background: rgb(69, 0, 234);}
+     45%  {background: rgb(87, 0, 158);}
+     60% {background: rgb(179, 0, 0);}
+     75% {background: rgb(255, 99, 0);}
+     90% {background: rgb(153, 255, 0);}
    }
 
 
