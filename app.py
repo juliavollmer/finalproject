@@ -4,16 +4,6 @@ import os
 from visual import visioning
 app = Flask(__name__)
 
-# # This is the path to the upload directory
-# app.config['UPLOAD_FOLDER'] = 'uploads/'
-# # These are the extension that we are accepting to be uploaded
-# app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-#
-# # For a given file, return whether it's an allowed type or not
-# def allowed_file(filename):
-#     return '.' in filename and \
-#            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
-
 UPLOAD_FOLDER = './tempaudio'
 IMAGE_FOLDER = "./static/picture"
 app.config['UPLOAD_FOLDER']= UPLOAD_FOLDER
