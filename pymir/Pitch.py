@@ -94,6 +94,7 @@ def getChord(chroma):
 	maxScore = 0
 	chordName = ""
 	chordColor = ""
+	chordMode = ""
 	for chord in chords:
 		score = cosineSimilarity(chroma, chord['vector'])
 		if score > maxScore:
