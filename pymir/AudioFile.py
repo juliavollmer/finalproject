@@ -12,7 +12,7 @@ from numpy import *
 import scipy.io.wavfile
 
 from pymir import Frame
-import pyaudio
+# import pyaudio
 
 
 class AudioFile(Frame.Frame):
@@ -28,7 +28,7 @@ class AudioFile(Frame.Frame):
 
         obj.sampleRate = 0
         obj.channels = 1
-        obj.format = pyaudio.paFloat32
+        # obj.format = pyaudio.paFloat32
 
         # Finally, we must return the newly created object:
         return obj
@@ -92,7 +92,7 @@ class AudioFile(Frame.Frame):
 
             audioFile.sampleRate = sampleRate
             audioFile.channels = 1
-            audioFile.format = pyaudio.paFloat32
+            # audioFile.format = pyaudio.paFloat32
 
             return audioFile
 
@@ -109,6 +109,6 @@ class AudioFile(Frame.Frame):
             audioFile = samples.view(AudioFile)
             audioFile.sampleRate = sampleRate
             audioFile.channels = 1
-            audioFile.format = pyaudio.paFloat32
+            # audioFile.format = pyaudio.paFloat32
 
             return audioFile

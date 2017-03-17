@@ -31,7 +31,7 @@ from random import randint
 
 def visioning(name, art):
     filename = "tempaudio/%s" % name
-
+    # filename = "tempaudio/test-stereo.mp3"
     audiofile = AudioFile.open(filename)
     y, sr = librosa.load(filename)
     tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
@@ -101,20 +101,20 @@ def visioning(name, art):
         w = ((randint(0,10)+beat_times[i]), (randint(0,10)++beat_times[i]))
         draw.point((x, w), fill = "white")
         i += 1
-    # x= (0, 0)
-    # y= (500, 400)
-    # start = 20
-    # end = 50
-    # draw.line((0, 0) + visual.size, fill=128)
-    # draw.line((0, visual.size[1], visual.size[0], 0), fill=128)
-    #
-    # draw.arc((x, y), start, end, coloring)
-    # draw.chord((x, y), start, end, fill = coloring)
-    # draw.ellipse((x, y), fill = coloring)
-    # draw.pieslice((x, y), start, end, fill = color)
-    # draw.line((x, y), fill = color)
-    # draw.point((x, y), fill = color)
-    # draw.polygon((x, y), fill = color)
-    # draw.rectangle((x, y), fill = color)
+    # # x= (0, 0)
+    # # y= (500, 400)
+    # # start = 20
+    # # end = 50
+    # # draw.line((0, 0) + visual.size, fill=128)
+    # # draw.line((0, visual.size[1], visual.size[0], 0), fill=128)
+    # #
+    # # draw.arc((x, y), start, end, coloring)
+    # # draw.chord((x, y), start, end, fill = coloring)
+    # # draw.ellipse((x, y), fill = coloring)
+    # # draw.pieslice((x, y), start, end, fill = color)
+    # # draw.line((x, y), fill = color)
+    # # draw.point((x, y), fill = color)
+    # # draw.polygon((x, y), fill = color)
+    # # draw.rectangle((x, y), fill = color)
     path= "static/picture/%s.png" % art
     visual.save(path, "PNG")
