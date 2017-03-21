@@ -19,16 +19,13 @@ def upload_file():
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       imfile = os.path.join(app.config['IMAGE_FOLDER'], artpiece + ".png")
       visioning(filename, artpiece)
+      
+      ## deletes music file, since this should only be temporary
       os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       return render_template('image.html', name=artpiece, piece= imfile)
   else:
       return render_template('upload.html')
 
-# @app.route('/yourimage', methods = ['GET', 'POST'])
-# def picture():
-#     visioning(artpiece)
-#     imfile = "./static/picture/%s.png" %artpiece
-#     return render_template('image.html', name=artpiece, piece= imfile)
 @app.route('/')
 def index():
     return redirect(url_for('upload_file'))
@@ -42,4 +39,4 @@ def gallery():
     return render_template('gallery.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

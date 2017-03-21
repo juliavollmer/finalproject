@@ -25,13 +25,13 @@ from pymir import Energy
 from pymir import Onsets
 from pymir import *
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 import numpy
 from random import randint
 
 def visioning(name, art):
     filename = "tempaudio/%s" % name
-    # filename = "tempaudio/test-stereo.mp3"
+    # filename = "tempaudio/test.mp3" ##for testing
     audiofile = AudioFile.open(filename)
     y, sr = librosa.load(filename)
     tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
@@ -43,8 +43,8 @@ def visioning(name, art):
     frames = audiofile.frames(8820, numpy.hamming)
 
     size = len(frames)
-    width = size / randint(2, 3)
-    height = size - width
+    width = size / 2
+    height = width
     # print height
     # print width
 
@@ -64,15 +64,21 @@ def visioning(name, art):
         startTime = startIndex / frame.sampleRate
         endTime = endIndex / frame.sampleRate
         # print startTime
-        x = (int(startTime), randint(1, height))
-        w = (randint(1, width), int(endTime))
-        start = height / randint(1,2)
-        end = width / randint(1,2)
+        start = startTime / randint(1,2)
+        end = endTime * randint(1,2)
+        defx = (height/randint(1,3) - endTime)
+        defy = (width/randint(1,3) - startTime)
+        x = (defy, startTime)
+        w = (endTime, defx)
+        # x = (int(startTime), randint(1, height))
+        # w = (randint(1, width), int(endTime))
+        # start = height / randint(1,2)
+        # end = width / randint(1,2)
         # print "%s | %s " % (chord, coloring)
         frameIndex = frameIndex + 1
         startIndex = startIndex + len(frame)
 
-        if mode == 0: # chord is minor
+        if mode == 0: ## chord is minor
             randomnumber = randint(0,3)
             if randomnumber==0:
                 draw.pieslice((x, w), start, end, fill = coloring)
@@ -82,7 +88,7 @@ def visioning(name, art):
                 draw.polygon((x, w), fill = coloring)
             else:
                 draw.rectangle((x, w), fill = coloring)
-        elif mode == 1:
+        elif mode == 1: ## chord is major
             randomnumber = randint(0,3)
             if randomnumber==0:
                 draw.arc((x, w), start, end, coloring)
@@ -93,28 +99,31 @@ def visioning(name, art):
             else:
                 draw.point((x, w), fill = coloring)
 
-    i= 0
+    i= 0 ## Beat creates a white point in the immage to show disruption
     while i < numberbeat:
         if i+1 > numberbeat:
             break
-        x = (beat_times[i], beat_times[i])
-        w = ((randint(0,10)+beat_times[i]), (randint(0,10)++beat_times[i]))
+
+        x = (beat_times[i], randint(1,height))
+        w = ((randint(1, width), beat_times[i]))
+
         draw.point((x, w), fill = "white")
         i += 1
-    # # x= (0, 0)
-    # # y= (500, 400)
-    # # start = 20
-    # # end = 50
-    # # draw.line((0, 0) + visual.size, fill=128)
-    # # draw.line((0, visual.size[1], visual.size[0], 0), fill=128)
-    # #
-    # # draw.arc((x, y), start, end, coloring)
-    # # draw.chord((x, y), start, end, fill = coloring)
-    # # draw.ellipse((x, y), fill = coloring)
-    # # draw.pieslice((x, y), start, end, fill = color)
-    # # draw.line((x, y), fill = color)
-    # # draw.point((x, y), fill = color)
-    # # draw.polygon((x, y), fill = color)
-    # # draw.rectangle((x, y), fill = color)
+
+    ## Tempo of song effects smoothness of the image
+    tempo1= int(tempo)
+    if 50<=tempo1<90:
+        visual = visual.filter(ImageFilter.SMOOTH_MORE)
+
+    elif 90<=tempo1<110:
+        visual = visual.filter(ImageFilter.SMOOTH)
+
+    elif tempo1>=130:
+        visual = visual.filter(ImageFilter.EDGE_ENHANCE)
+
+    else:
+        pass
+
+
     path= "static/picture/%s.png" % art
     visual.save(path, "PNG")
