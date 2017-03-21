@@ -12,8 +12,8 @@
 
 # length of music piece determines the size of the final image XXX
 # Tones (frequencies) determines the colors: XXX --> changed to Chords
-# Rhythm and breaks determines the position and distance of objects inside (be it
-# geometrical or not)
+# Beats determine white interruptions
+# Tempo influences outlines
 # If possible, major/minor will determine the shape of objects, minor will be more
 # sharp, while major more round/'soft'
 # A random value will be incorporated to make a different image each time
