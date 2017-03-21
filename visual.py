@@ -112,6 +112,7 @@ def visioning(name, art):
 
     ## Tempo of song effects smoothness of the image
     tempo1= int(tempo)
+    visual = visual.filter(ImageFilter.EDGE_ENHANCE)
     if 50<=tempo1<90:
         visual = visual.filter(ImageFilter.SMOOTH_MORE)
 
@@ -119,7 +120,8 @@ def visioning(name, art):
         visual = visual.filter(ImageFilter.SMOOTH)
 
     elif tempo1>=130:
-        visual = visual.filter(ImageFilter.EDGE_ENHANCE)
+        for i in range(0,5):
+            visual = visual.filter(ImageFilter.EDGE_ENHANCE)
 
     else:
         pass
